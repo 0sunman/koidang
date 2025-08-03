@@ -39,7 +39,11 @@ function StepRound({
   phrase: number;
   children: ReactNode;
 }) {
-  return isStep(phrase, step) ? children : <></>;
+  return isStep(phrase, step) ? (
+    <div style={{ minHeight: "100vh" }}>{children}</div>
+  ) : (
+    <></>
+  );
 }
 function MBTIDescription({
   mbti,
@@ -300,6 +304,27 @@ function Step_4({ step, mbti, birthday, name }: any) {
     }
   }
 
+  useEffect(() => {
+    let target: any = null;
+    switch (phrase) {
+      case 2:
+        target = clip1.current;
+        break;
+      case 4:
+        target = clip2.current;
+        break;
+      case 6:
+        target = clip3.current;
+        break;
+      case 8:
+        target = clip4.current;
+        break;
+    }
+    if (target !== null) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [phrase]);
+
   function getLuck({
     color,
     foodQuery,
@@ -320,10 +345,17 @@ function Step_4({ step, mbti, birthday, name }: any) {
       </>
     );
   }
+  const [clip1, clip2, clip3, clip4] = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
   return (
     isStep(step, 4) && (
       <>
         <LoadingElement delay={3000} onNext={() => onNext(1)} />
+        <div ref={clip1} style={{ height: "1px" }}></div>
         <StepRound phrase={phrase} step={2}>
           <MBTIDescription
             title="연애운"
@@ -348,8 +380,9 @@ function Step_4({ step, mbti, birthday, name }: any) {
               foodQuery: "연애운",
               jewelryQuery: "love",
             })}
-          <LoadingElement delay={3000} onNext={() => onNext(3)} />
+          <LoadingElement delay={10000} onNext={() => onNext(3)} />
         </StepRound>
+        <div ref={clip2} style={{ height: "1px" }}></div>
         <StepRound phrase={phrase} step={4}>
           <MBTIDescription
             title="건강운"
@@ -374,7 +407,7 @@ function Step_4({ step, mbti, birthday, name }: any) {
               foodQuery: "건강운",
               jewelryQuery: "health",
             })}
-          <LoadingElement delay={6000} onNext={() => onNext(5)} />
+          <LoadingElement delay={20000} onNext={() => onNext(5)} />
           {/* {isHealthFood && (
             <>
               <h2 style={{ color: "#eb6134" }}>
@@ -397,6 +430,7 @@ function Step_4({ step, mbti, birthday, name }: any) {
             </>
           )} */}
         </StepRound>
+        <div ref={clip3} style={{ height: "1px" }}></div>
         <StepRound phrase={phrase} step={6}>
           <MBTIDescription
             title="금전운"
@@ -421,8 +455,9 @@ function Step_4({ step, mbti, birthday, name }: any) {
               foodQuery: "금전운",
               jewelryQuery: "money",
             })}
-          <LoadingElement delay={9000} onNext={() => onNext(7)} />
+          <LoadingElement delay={30000} onNext={() => onNext(7)} />
         </StepRound>
+        <div ref={clip4} style={{ height: "1px" }}></div>
         <StepRound phrase={phrase} step={8}>
           <MBTIDescription
             title="학업운"

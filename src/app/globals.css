@@ -299,7 +299,7 @@ html {
 
 /**/
 .result_mbti {
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 .result_mbti ul:nth-of-type(n + 4) {
   margin: 1.5rem 0;
