@@ -19,11 +19,12 @@ import StudyMbti from "./_lib/mbti/study";
 import LoadingElement from "./_lib/loadingElement";
 import { getFoodRecommendationWithDate } from "./_lib/util/getFoodResult";
 import { applyTalismanEffectDeterministic } from "./_lib/util/applyTalismanEffectDeterministic";
-
-export const SET_STEP = "SET_STEP";
-export const SET_NAME = "SET_NAME";
-export const SET_MBTI = "SET_MBTI";
-export const SET_BIRTHDAY = "SET_BIRTHDAY";
+import {
+  SET_BIRTHDAY,
+  SET_MBTI,
+  SET_NAME,
+  SET_STEP,
+} from "./_lib/const/actions";
 
 function isStep(step: number, currentStep: number) {
   return step >= currentStep;
@@ -158,9 +159,9 @@ function getJewelry(jewelry: any, target: string) {
     jewelry[target] &&
     (jewelry[target]["colorDistribution"] as any) &&
     (function () {
-      let keyArray = [];
-      let valueArray: any = [];
-      for (let key in jewelry[target]["colorDistribution"] as any) {
+      const keyArray: any = [];
+      const valueArray: any = [];
+      for (const key in jewelry[target]["colorDistribution"] as any) {
         keyArray.push(key);
         valueArray.push(jewelry[target]["colorDistribution"][key]);
       }
