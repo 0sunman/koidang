@@ -98,22 +98,37 @@ export default function InputElement({
                   );
                 default:
                   return (
-                    <input
-                      style={{
-                        userSelect: "none",
-                        border: 0,
-                        outline: 0,
-                      }}
-                      ref={cmdRef}
-                      type=""
-                      onChange={onChange}
-                      onKeyDown={(e) => {
-                        if (e.key === "Enter") {
-                          onNext(); // 원하는 함수 실행
+                    <>
+                      <input
+                        style={{
+                          userSelect: "none",
+                          border: 0,
+                          outline: 0,
+                        }}
+                        ref={cmdRef}
+                        type=""
+                        onChange={onChange}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter") {
+                            onNext(); // 원하는 함수 실행
+                            setIsDone(true);
+                          }
+                        }}
+                      />
+                      <button
+                        style={{
+                          border: "1px solid #00ff00",
+                          padding: "1px 10px",
+                          borderRadius: "5px",
+                        }}
+                        onClick={() => {
+                          onNext();
                           setIsDone(true);
-                        }
-                      }}
-                    />
+                        }}
+                      >
+                        선택
+                      </button>
+                    </>
                   );
               }
             })()}

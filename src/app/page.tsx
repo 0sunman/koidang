@@ -133,7 +133,14 @@ function Step_3({ step, name, setName, setStep }: any) {
 }
 function getFood(foodList: any, target: string) {
   return (
-    <div style={{ display: "flex", gap: "10px", margin: "20px" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "10px",
+        margin: "20px",
+        overflow: "scroll",
+      }}
+    >
       {foodList[target].map((ele: string, key: number) => {
         const delay = Math.random() * 0.5 + 0.1; // 0.1s ~ 0.6s
         const rotateZ = Math.floor(Math.random() * 20 - 10); // -10deg ~ +10deg
