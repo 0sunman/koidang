@@ -3,16 +3,16 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Head from "next/head";
 
-// export const metadata: Metadata = {
-//   title: "KOIDANG",
-//   description: "KOIDANG",
-//   viewport: {
-//     width: "device-width",
-//     initialScale: 1,
-//     maximumScale: 1,
-//     userScalable: false,
-//   },
-// };
+export const metadata: Metadata = {
+  // title: "KOIDANG",
+  // description: "KOIDANG",
+  // viewport: {
+  //   width: "device-width",
+  //   initialScale: 1,
+  //   maximumScale: 1,
+  //   userScalable: false,
+  // },
+};
 
 export default function RootLayout({
   children,
